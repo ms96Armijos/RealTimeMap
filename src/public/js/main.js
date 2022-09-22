@@ -11,15 +11,14 @@ map.on('locationfound', e => {
     
     const coords = [e.latlng.lat, e.latlng.lng];
     const marker = L.marker(coords);
-    marker.bindPopup('Marcabeli');
+    marker.bindPopup('Hola, esta es tu coordenada');
     map.addLayer(marker);
     console.log(e.latlng)
     socket.emit('userCoordinates', e.latlng)
 });
 
 socket.on('newUserConnected', coord =>{
-    console.log('new user connected')
     const marker = L.marker([coord.lat+1, coord.lng+1]);
-    marker.bindPopup('New User');
+    marker.bindPopup('Coordenada del nuevo usuario');
     map.addLayer(marker);
 })
